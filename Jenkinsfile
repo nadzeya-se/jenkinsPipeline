@@ -23,7 +23,7 @@ pipeline {
     	  	}
 	  steps {
                 sh "echo 'My github token is $nadzeyase'"
-		sh "echo 'My Password is $nadzeyase_USR'"
+		sh "echo 'My UserName is $nadzeyase_USR'"
 		sh "echo 'My Password is $nadzeyase_PSW'"
             }
         }
