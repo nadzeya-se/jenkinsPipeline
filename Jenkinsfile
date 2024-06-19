@@ -11,9 +11,8 @@ pipeline {
         stage('write') {
             steps {
                 script {
-                   def date = new Date()
-                   def data = "${params.Greeting}" + date
-                   writeFile(file: 'result.txt', text: date)
+                    def content = "${params.Greeting}"
+                    writeFile(file: 'result.txt', text: content)
                 }
             }
         }
