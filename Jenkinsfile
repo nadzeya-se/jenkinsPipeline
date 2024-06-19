@@ -15,7 +15,7 @@ pipeline {
         stage('write') {
             steps {
                 script {
-                    def content = "${params.Greeting}"
+                    def content = "${params.Greeting} World!"
                     writeFile(file: 'result.txt', text: content)
                 }
             }
