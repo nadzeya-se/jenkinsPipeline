@@ -1,6 +1,5 @@
 pipeline {
-    agent any
-
+    agent { label 'default' }
     stages {
         stage('Сборка') {
             steps {
