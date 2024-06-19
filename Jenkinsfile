@@ -1,20 +1,33 @@
 pipeline {
     agent { label 'default' }
+    parameters {
+      string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+    }
+    triggers {
+        cron('H 0 * * *')
+    }
+
     stages {
-        stage('Сборка') {
+        stage('write') {
             steps {
-                echo 'Выполняем команды для сборки'
+                script {
+                   def date = new Date()
+                   def data = "${params.Greeting}" + date
+                   writeFile(file: 'result.txt', text: date)
+                }
             }
         }
-        stage('Тестирование') {
+
+        stage('archive') {
             steps {
-                echo 'Тестируем нашу сборку'
+                archiveArtifacts artifacts: 'result.txt', allowEmptyArchive: true
             }
         }
-        stage('Развертывание') {
-            steps {
-                echo 'Переносим код в рабочую среду или создаем артефакт'
-            }
+    }
+
+    post {
+        always {
+            cleanWs()
         }
     }
 }
