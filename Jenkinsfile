@@ -21,6 +21,15 @@ pipeline {
             }
         }
 
+	stage('credentials') {
+          environment {
+        	nadzeyase = credentials('nadzeya-se')
+    	  	}
+	  steps {
+                sh "echo 'My github token is $nadzeyase'"
+            }
+        }
+
         stage('archive') {
             steps {
                 archiveArtifacts artifacts: 'result.txt', allowEmptyArchive: true
