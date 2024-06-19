@@ -6,11 +6,7 @@ pipeline {
     triggers {
         cron('H 0 * * *')
     }
-
-    environment {
-        CREDENTIALS = credentials('nadzeya-se')
-    }
-
+	
     stages {
         stage('write') {
             steps {
@@ -27,6 +23,7 @@ pipeline {
     	  	}
 	  steps {
                 sh "echo 'My github token is $nadzeyase'"
+		sh "echo 'My Password is $nadzeyase_USR'"
 		sh "echo 'My Password is $nadzeyase_PSW'"
             }
         }
