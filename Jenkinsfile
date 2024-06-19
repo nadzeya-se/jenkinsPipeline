@@ -7,6 +7,10 @@ pipeline {
         cron('H 0 * * *')
     }
 
+    environment {
+        CREDENTIALS = credentials('nadzeya-se')
+    }
+
     stages {
         stage('write') {
             steps {
