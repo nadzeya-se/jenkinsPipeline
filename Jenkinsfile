@@ -1,7 +1,7 @@
 pipeline {
     agent { label 'default' }
     parameters {
-      string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+      string(name: 'Studentname', defaultValue: 'Selitckaya', description: 'What is your name?')
     }
     triggers {
         cron('H 0 * * *')
@@ -15,7 +15,7 @@ pipeline {
         stage('write') {
             steps {
                 script {
-                    def content = "${params.Greeting} World!"
+                    def content = "Hello ${params.Studentname}!"
                     writeFile(file: 'result.txt', text: content)
                 }
             }
